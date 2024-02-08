@@ -12,8 +12,8 @@ protected:
 
 public:
     Pez(string _especie, string _color) : especie(_especie), color(_color) {}
-    virtual void nadar() const {
-        cout << "Nadando como un pez genérico" << endl;
+    virtual void descripcion() const {
+        cout << "Este es un " << especie << " de color " << color << endl;
     }
     virtual ~Pez() {}
 };
@@ -25,8 +25,8 @@ protected:
 
 public:
     PezOceano(string _especie, string _color, string _tipoAlimentacion) : Pez(_especie, _color), tipoAlimentacion(_tipoAlimentacion) {}
-    void nadar() const override {
-        cout << "Nadando en el océano como un " << especie << " de color " << color << " y se alimenta de " << tipoAlimentacion << endl;
+    void descripcion() const override {
+        cout << "Este es un " << especie << " de color " << color << " y se alimenta de " << tipoAlimentacion << endl;
     }
 };
 
@@ -38,24 +38,24 @@ protected:
 public:
     PezTropical(string _especie, string _color, string _tipoAlimentacion, bool _aletasLuminosas)
         : PezOceano(_especie, _color, _tipoAlimentacion), aletasLuminosas(_aletasLuminosas) {}
-    void nadar() const override {
-        cout << "Nadando en el océano tropical como un " << especie << " de color " << color << " y se alimenta de " << tipoAlimentacion;
+    void descripcion() const override {
+        cout << "Este es un " << especie << " del oceano tropical de color " << color << " y se alimenta de " << tipoAlimentacion;
         if (aletasLuminosas) {
-            cout << " con aletas luminosas";
+            cout << ", tiene aletas luminosas";
         }
         cout << endl;
     }
 };
 
 int main() {
-    Pez pezGenerico("Pez", "Gris");
-    pezGenerico.nadar();
+    Pez pezGenerico("pez", "gris");
+    pezGenerico.descripcion();
 
-    PezOceano pezAzul("Pez Azul", "Azul", "Plancton");
-    pezAzul.nadar();
+    PezOceano pezAzul("pez azul", "azul", "plancton");
+    pezAzul.descripcion();
 
-    PezTropical pezMariposa("Pez Mariposa", "Amarillo", "Algas", true);
-    pezMariposa.nadar();
+    PezTropical pezMariposa("pez mariposa", "amarillo", "algas", true);
+    pezMariposa.descripcion();
 
     return 0;
 }
